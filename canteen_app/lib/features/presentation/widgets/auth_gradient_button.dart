@@ -1,10 +1,14 @@
 import 'package:canteen_app/core/theme/pallet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AuthGradientButton extends StatelessWidget {
   final String buttonText;
-  const AuthGradientButton({super.key, required this.buttonText});
+  final VoidCallback onPressed;
+  const AuthGradientButton({
+    super.key,
+    required this.buttonText,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +20,9 @@ class AuthGradientButton extends StatelessWidget {
               AppPallete.gradient2,
             ],
           ),
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius: BorderRadius.circular(5)),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(400, 55),
             backgroundColor: AppPallete.transparentColor,
@@ -26,8 +30,9 @@ class AuthGradientButton extends StatelessWidget {
         child: Text(
           buttonText,
           style: const TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppPallete.blackColor,
           ),
         ),
       ),

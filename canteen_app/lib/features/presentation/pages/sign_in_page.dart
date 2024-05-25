@@ -1,4 +1,5 @@
 import 'package:canteen_app/core/theme/pallet.dart';
+import 'package:canteen_app/features/presentation/pages/sign_up_page.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_field.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +36,14 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               const Text(
                 'Sign In',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: AppPallete.blackColor,
+                ),
               ),
               const SizedBox(
-                height: 25,
+                height: 30,
               ),
               AuthField(
                 hintText: "Email",
@@ -55,26 +60,42 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 height: 10,
               ),
-              const AuthGradientButton(
+              AuthGradientButton(
                 buttonText: 'Sign in',
+                onPressed: () {},
               ),
               const SizedBox(
                 height: 10,
               ),
-              RichText(
-                text: TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: Theme.of(context).textTheme.titleMedium,
-                    children: [
-                      TextSpan(
-                          text: 'Sign Up',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                  color: AppPallete.gradient2,
-                                  fontWeight: FontWeight.bold))
-                    ]),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpPage(),
+                    ),
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                      text: 'Don\'t have an account? ',
+                      style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                    color: AppPallete.blackColor,
+                                    fontWeight: FontWeight.bold),
+                      children: [
+                        TextSpan(
+                            text: 'Sign Up',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                    color: AppPallete.gradient2,
+                                    fontWeight: FontWeight.bold))
+                      ]),
+                ),
               )
             ],
           ),
