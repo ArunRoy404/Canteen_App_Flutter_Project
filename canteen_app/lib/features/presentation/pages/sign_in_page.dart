@@ -48,6 +48,7 @@ class _SignInPageState extends State<SignInPage> {
               AuthField(
                 hintText: "Email",
                 controller: emailController,
+                icon: const Icon(Icons.email_outlined),
               ),
               const SizedBox(
                 height: 10,
@@ -56,6 +57,7 @@ class _SignInPageState extends State<SignInPage> {
                 hintText: "Password",
                 controller: passController,
                 isObsecureText: true,
+                icon: const Icon(Icons.password_outlined),
               ),
               const SizedBox(
                 height: 10,

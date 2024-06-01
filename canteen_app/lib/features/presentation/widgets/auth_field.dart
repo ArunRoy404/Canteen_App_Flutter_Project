@@ -6,12 +6,14 @@ class AuthField extends StatelessWidget {
   final TextEditingController controller;
   final bool isObsecureText;
   final Color fillColor;
+  final Icon? icon;
   const AuthField({
     super.key,
     required this.hintText,
     required this.controller,
     this.isObsecureText = false,
     this.fillColor = AppPallete.whiteColor,
+    this.icon,
   });
 
   @override
@@ -35,6 +37,8 @@ class AuthField extends StatelessWidget {
           hintText: hintText,
           fillColor: fillColor,
           filled: true,
+          prefixIcon: icon,
+          prefixIconColor: AppPallete.blackColor,
           errorStyle: const TextStyle(
             color: Colors.red,
             fontWeight: FontWeight.bold,

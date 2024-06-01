@@ -53,6 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   AuthField(
                     hintText: "Name",
                     controller: nameController,
+                    icon: const Icon(Icons.person_2_outlined),
                   ),
                   const SizedBox(
                     height: 10,
@@ -60,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   AuthField(
                     hintText: "Email",
                     controller: emailController,
+                    icon: const Icon(Icons.email_outlined),
                   ),
                   const SizedBox(
                     height: 10,
@@ -68,6 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     hintText: "Password",
                     controller: passController,
                     isObsecureText: true,
+                    icon: const Icon(Icons.password_outlined),
                   ),
                   const SizedBox(
                     height: 10,
