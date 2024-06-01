@@ -26,9 +26,9 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: const TextStyle(color: AppPallete.blackColor),
-        fillColor: AppPallete.lightgrey,
+        fillColor: AppPallete.whiteColor,
         filled: true,
         enabledBorder: _border(),
-        focusedBorder:_border(AppPallete.blackColor)
+        focusedBorder:_border(AppPallete.deepPurple)
       ));
 }

@@ -11,24 +11,44 @@ class AuthField extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.isObsecureText = false,
-    this.fillColor = AppPallete.lightgrey,
+    this.fillColor = AppPallete.whiteColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: const TextStyle(color: AppPallete.blackColor),
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: hintText,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.deepPurple.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
-      validator: (value) {
-        if (value!.isEmpty) {
-          return "$hintText is missing!";
-        }
-        return null;
-      },
-      obscureText: isObsecureText,
+      child: TextFormField(
+        style: const TextStyle(color: AppPallete.blackColor),
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          fillColor: fillColor,
+          filled: true,
+          errorStyle: const TextStyle(
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+            backgroundColor: Colors.transparent, // Ensure transparency
+          ),
+        ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            return "$hintText is missing!";
+          }
+          return null;
+        },
+        obscureText: isObsecureText,
+      ),
     );
   }
 }

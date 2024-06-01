@@ -4,6 +4,8 @@ import 'package:canteen_app/features/data/data_resources/auth_remote_data_source
 import 'package:canteen_app/features/data/repositories/auth_repository_impl.dart';
 import 'package:canteen_app/features/domain/Repository/usecases/user_sign_up.dart';
 import 'package:canteen_app/features/presentation/bloc/auth_bloc.dart';
+import 'package:canteen_app/features/presentation/pages/home_page.dart';
+import 'package:canteen_app/features/presentation/pages/sign_in_page.dart';
 import 'package:canteen_app/features/presentation/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

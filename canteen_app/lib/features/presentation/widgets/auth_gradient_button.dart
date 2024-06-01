@@ -12,27 +12,32 @@ class AuthGradientButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [
-              AppPallete.gradient1,
-              AppPallete.gradient2,
-            ],
-          ),
-          borderRadius: BorderRadius.circular(5)),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-            fixedSize: const Size(400, 55),
-            backgroundColor: AppPallete.transparentColor,
-            shadowColor: AppPallete.transparentColor),
-        child: Text(
-          buttonText,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppPallete.blackColor,
+    return Material(
+      borderRadius: BorderRadius.circular(20),
+      elevation: 10,
+      shadowColor: Colors.deepPurple,
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                AppPallete.gradient1,
+                AppPallete.gradient2,
+              ],
+            ),
+            borderRadius: BorderRadius.circular(5)),
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+              fixedSize: const Size(400, 55),
+              backgroundColor: AppPallete.transparentColor,
+              shadowColor: AppPallete.transparentColor),
+          child: Text(
+            buttonText,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppPallete.blackColor,
+            ),
           ),
         ),
       ),
