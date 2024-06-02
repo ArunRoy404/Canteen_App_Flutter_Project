@@ -132,6 +132,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
+            const SizedBox(height: 30),
             const Padding(
               padding: EdgeInsets.only(
                 top: 25,
@@ -140,6 +141,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Divider(color: Colors.white),
             ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
