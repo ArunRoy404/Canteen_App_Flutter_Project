@@ -20,9 +20,9 @@ class AppTheme {
       ));
 
       static final lightThemeMode = ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: AppPallete.greyColor,
+      scaffoldBackgroundColor: const Color.fromARGB(255, 209, 196, 233),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppPallete.greyColor
+        backgroundColor: Color.fromARGB(255, 179, 136, 255),
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: const TextStyle(color: AppPallete.blackColor),

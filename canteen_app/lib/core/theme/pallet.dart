@@ -14,4 +14,5 @@ class AppPallete {
   static const Color transparentColor = Colors.transparent;
   static const Color lightgrey = Color.fromARGB(255, 233, 232, 232);
   static const Color deepPurple = Colors.deepPurple;
+  static Color purple = Colors.deepPurple.shade200;
 }

@@ -1,11 +1,9 @@
 import 'package:canteen_app/core/theme/pallet.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_field.dart';
-import 'package:canteen_app/features/presentation/widgets/auth_gradient_button.dart';
 import 'package:canteen_app/features/presentation/widgets/food_tiles.dart';
 import 'package:canteen_app/models/food.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -55,7 +53,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppPallete.deepPurple,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple.shade200,
+        leading: const Icon(Icons.arrow_back_ios_new_outlined),
+        backgroundColor: AppPallete.purple,
         title: const Text(
           'Welcome',
           style: TextStyle(
@@ -132,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
             const Padding(
               padding: EdgeInsets.only(
                 top: 25,
@@ -141,35 +140,9 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Divider(color: Colors.white),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
           ],
         ),
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: AppPallete.deepPurple,
-        color: Colors.deepPurple.shade200,
-        items: [
-          const Icon(
-            Icons.home_outlined,
-            semanticLabel: 'Home',
-            color: AppPallete.blackColor,
-          ),
-          const Icon(
-            Icons.fastfood_outlined,
-            semanticLabel: 'Menu',
-            color: AppPallete.blackColor,
-          ),
-          const Icon(
-            Icons.shopping_cart_outlined,
-            semanticLabel: 'Cart',
-            color: AppPallete.blackColor,
-          ),
-          const Icon(
-            Icons.person_outline,
-            semanticLabel: 'Profile',
-            color: AppPallete.blackColor,
-          ),
-        ],
       ),
     );
   }

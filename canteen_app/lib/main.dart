@@ -1,38 +1,34 @@
-import 'package:canteen_app/core/secrets/app_secrets.dart';
+import 'package:canteen_app/admin/admin_sign_in.dart';
 import 'package:canteen_app/core/theme/theme.dart';
-import 'package:canteen_app/features/data/data_resources/auth_remote_data_source.dart';
-import 'package:canteen_app/features/data/repositories/auth_repository_impl.dart';
-import 'package:canteen_app/features/domain/Repository/usecases/user_sign_up.dart';
-import 'package:canteen_app/features/presentation/bloc/auth_bloc.dart';
+import 'package:canteen_app/features/presentation/pages/add_items.dart';
 import 'package:canteen_app/features/presentation/pages/home_page.dart';
 import 'package:canteen_app/features/presentation/pages/sign_in_page.dart';
 import 'package:canteen_app/features/presentation/pages/sign_up_page.dart';
+import 'package:canteen_app/features/presentation/widgets/nav_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final supabase = await Supabase.initialize(
-    url: AppSecrets.supabaseUrl,
-    anonKey: AppSecrets.supabaseAnonKey,
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyBAscXzQYYbBIT9USPhhYv8a_9g0Z0EguM",
+            authDomain: "canteenapp-9f3bb.firebaseapp.com",
+            projectId: "canteenapp-9f3bb",
+            storageBucket: "canteenapp-9f3bb.appspot.com",
+            messagingSenderId: "936429006771",
+            appId: "1:936429006771:web:24373be6e4e6b98a13a5c6",
+            measurementId: "G-ZMKCDLXCNW"));
+  } else {
+    Firebase.initializeApp();
+  }
+
+  runApp(
+    const MyApp(),
   );
-  runApp(MultiBlocProvider(
-    providers: [
-      BlocProvider(
-        create: (_) => AuthBloc(
-          userSignUp: UserSignUp(
-            AuthRepositoryImpl(
-              AuthRemotedataSourceImpl(
-                supabase.client,
-              ),
-            ),
-          ),
-        ),
-      )
-    ],
-    child: const MyApp(),
-  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +41,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Canteen App',
       theme: AppTheme.lightThemeMode,
-      home: const HomePage(),
+      home: const addFood(),
     );
   }
 }
