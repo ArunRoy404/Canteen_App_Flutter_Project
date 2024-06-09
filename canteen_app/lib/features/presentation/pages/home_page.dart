@@ -1,4 +1,5 @@
 import 'package:canteen_app/core/theme/pallet.dart';
+import 'package:canteen_app/features/presentation/pages/sign_in_page.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_field.dart';
 import 'package:canteen_app/features/presentation/widgets/food_tiles.dart';
 import 'package:canteen_app/models/food.dart';
@@ -23,23 +24,27 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<Food>> fetchFoods() async {
-  final QuerySnapshot snapshot = await FirebaseFirestore.instance.collection('foods').get();
-  return snapshot.docs.map((doc) {
-    return Food(
-      name: doc['name'],
-      price: doc['price'],
-      imagepath: doc['image'],
-      description: doc['description'],
-    );
-  }).toList();
-}
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('foods').get();
+    return snapshot.docs.map((doc) {
+      return Food(
+        name: doc['name'],
+        price: doc['price'],
+        imagepath: doc['image'],
+        description: doc['description'],
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppPallete.deepPurple,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new_outlined),
+        leading: const Icon(
+          Icons.home,
+          color: AppPallete.blackColor,
+        ),
         backgroundColor: AppPallete.purple,
         title: const Text(
           'Welcome',
@@ -48,6 +53,23 @@ class _HomePageState extends State<HomePage> {
             fontWeight: FontWeight.w900,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.logout_outlined,
+              color: AppPallete.blackColor,
+            ),
+            tooltip: 'Sign Out',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignInPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -59,6 +81,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w900,
+                fontSize: 40,
               ),
             ),
             const SizedBox(height: 10),
@@ -91,6 +114,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
+                fontSize: 25,
               ),
             ),
             const SizedBox(height: 20),
@@ -117,7 +141,6 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-
             const SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(
@@ -128,12 +151,12 @@ class _HomePageState extends State<HomePage> {
               child: Divider(color: Colors.white),
             ),
             const SizedBox(height: 35),
-
             const Text(
               'Popular Foods',
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
+                fontSize: 25,
               ),
             ),
             const SizedBox(height: 20),

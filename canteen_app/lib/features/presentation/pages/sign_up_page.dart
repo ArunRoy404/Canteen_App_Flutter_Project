@@ -1,5 +1,4 @@
 import 'package:canteen_app/core/theme/pallet.dart';
-import 'package:canteen_app/features/presentation/pages/home_page.dart';
 import 'package:canteen_app/features/presentation/pages/sign_in_page.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_field.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_gradient_button.dart';

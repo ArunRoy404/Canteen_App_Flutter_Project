@@ -84,7 +84,6 @@ class _addFoodState extends State<addFood> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: const Icon(Icons.arrow_back_ios_new_outlined),
           title: const Text(
             "Add Food Items",
             style: TextStyle(

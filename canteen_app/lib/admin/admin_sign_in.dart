@@ -52,6 +52,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                 AuthField(
                   hintText: "Password",
                   controller: userpasswordController,
+                  maxLines: 1,
                   isObsecureText: true,
                   icon: const Icon(Icons.password_outlined),
                 ),

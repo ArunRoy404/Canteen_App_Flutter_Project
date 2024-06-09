@@ -1,11 +1,6 @@
-import 'package:canteen_app/admin/admin_sign_in.dart';
 import 'package:canteen_app/core/theme/theme.dart';
-import 'package:canteen_app/features/presentation/pages/add_items.dart';
 import 'package:canteen_app/features/presentation/pages/home_page.dart';
 import 'package:canteen_app/features/presentation/pages/sign_in_page.dart';
-import 'package:canteen_app/features/presentation/pages/sign_up_page.dart';
-import 'package:canteen_app/features/presentation/widgets/nav_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,7 +36,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Canteen App',
       theme: AppTheme.lightThemeMode,
-      home: const SignInPage(),
+      home: const HomePage(),
     );
   }
 }
