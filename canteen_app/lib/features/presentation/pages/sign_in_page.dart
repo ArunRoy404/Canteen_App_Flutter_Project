@@ -96,6 +96,7 @@ class _SignInPageState extends State<SignInPage> {
                 hintText: "Password",
                 controller: passController,
                 isObsecureText: true,
+                maxLines: 1,
                 icon: const Icon(Icons.password_outlined),
               ),
               const SizedBox(

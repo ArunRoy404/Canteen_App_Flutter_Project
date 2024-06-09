@@ -46,6 +46,9 @@ dependencies:
   cloud_firestore: ^4.17.5
   random_string: ^2.3.1
   shared_preferences: ^2.2.3
+  image_picker: ^1.1.2
+  firebase_storage: 
+  flutter_dropzone:
 
 dev_dependencies:
   flutter_test:

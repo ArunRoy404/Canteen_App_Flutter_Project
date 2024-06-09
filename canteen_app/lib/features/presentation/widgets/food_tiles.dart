@@ -17,7 +17,7 @@ class FoodTiles extends StatelessWidget {
         boxShadow: [
           const BoxShadow(
             color: AppPallete.blackColor,
-            blurRadius: 2,
+            blurRadius: 20,
             offset: Offset(4, 8),
           ),
         ],
@@ -29,7 +29,32 @@ class FoodTiles extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(food.imagepath),
+              child: Image.network(
+                food.imagepath,
+                fit: BoxFit.cover,
+                height: 150,
+                width: 150,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              (loadingProgress.expectedTotalBytes ?? 1)
+                          : null,
+                    ),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.error_outline,
+                    color: AppPallete.blackColor,
+                    size: 100,
+                  );
+                },
+              ),
             ),
           ),
           Text(

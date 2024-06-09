@@ -112,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   const SizedBox(
                     height: 10,
-                  ),
+                ),
                   AuthField(
                     hintText: "Email",
                     controller: emailController,
@@ -125,6 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     hintText: "Password",
                     controller: passController,
                     isObsecureText: true,
+                    maxLines: 1,
                     icon: const Icon(Icons.password_outlined),
                   ),
                   const SizedBox(

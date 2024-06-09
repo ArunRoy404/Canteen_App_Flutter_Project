@@ -2,6 +2,7 @@ import 'package:canteen_app/core/theme/pallet.dart';
 import 'package:canteen_app/features/presentation/widgets/auth_field.dart';
 import 'package:canteen_app/features/presentation/widgets/food_tiles.dart';
 import 'package:canteen_app/models/food.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -22,31 +23,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<Food>> fetchFoods() async {
-    // Simulating network request with a delay
-    await Future.delayed(const Duration(seconds: 2));
-    // Here, you would normally fetch data from an API or database
-    // For this example, we are returning a hardcoded list of foods
-    return [
-      Food(
-        name: 'Burger',
-        price: '200',
-        imagepath: 'lib/images/burger.png',
-        description: 'Not a Healthy Food!',
-      ),
-      Food(
-        name: 'Pizza',
-        price: '300',
-        imagepath: 'lib/images/pizza.png',
-        description: 'Delicious Italian Pizza!',
-      ),
-      Food(
-        name: 'Pasta',
-        price: '250',
-        imagepath: 'lib/images/pasta.png',
-        description: 'Tasty Pasta!',
-      ),
-    ];
-  }
+  final QuerySnapshot snapshot = await FirebaseFirestore.instance.collection('foods').get();
+  return snapshot.docs.map((doc) {
+    return Food(
+      name: doc['name'],
+      price: doc['price'],
+      imagepath: doc['image'],
+      description: doc['description'],
+    );
+  }).toList();
+}
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +117,8 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            const SizedBox(height: 50),
+
+            const SizedBox(height: 15),
             const Padding(
               padding: EdgeInsets.only(
                 top: 25,
@@ -140,7 +127,39 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Divider(color: Colors.white),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 35),
+
+            const Text(
+              'Popular Foods',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: FutureBuilder<List<Food>>(
+                future: fetchFoods(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return const Center(child: Text('Error fetching data'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No food items available'));
+                  } else {
+                    final foods = snapshot.data!;
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: foods.length,
+                      itemBuilder: (context, index) {
+                        return FoodTiles(food: foods[index]);
+                      },
+                    );
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

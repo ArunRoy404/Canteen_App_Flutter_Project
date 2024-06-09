@@ -7,6 +7,7 @@ class AuthField extends StatelessWidget {
   final bool isObsecureText;
   final Color fillColor;
   final Icon? icon;
+  final int? maxLines;
   const AuthField({
     super.key,
     required this.hintText,
@@ -14,6 +15,7 @@ class AuthField extends StatelessWidget {
     this.isObsecureText = false,
     this.fillColor = AppPallete.whiteColor,
     this.icon,
+    this.maxLines,
   });
 
   @override
@@ -31,6 +33,7 @@ class AuthField extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        maxLines: maxLines,
         style: const TextStyle(color: AppPallete.blackColor),
         controller: controller,
         decoration: InputDecoration(

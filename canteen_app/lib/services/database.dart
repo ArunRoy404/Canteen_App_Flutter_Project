@@ -8,4 +8,10 @@ class DatabaseMEthods {
         .doc(id)
         .set(userInfoMap);
   }
+
+  addFood(Map<String, dynamic> userInfoMap) async {
+    return await FirebaseFirestore.instance
+        .collection("foods")
+        .add(userInfoMap);
+  }
 }
