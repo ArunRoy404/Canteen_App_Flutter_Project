@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Canteen App',
       theme: AppTheme.lightThemeMode,
-      home: const HomePage(),
+      home: const SignInPage(),
     );
   }
 }
